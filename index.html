@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOWS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+body {
+
+    background-color: rgb(59, 131, 131);
+
+}
+
+</style>
+<body>
+
+    <body>
+        <h1 class="text-center">Online MQTT Web Client</h1>
+        <div class="row" style="padding-top: 30px;">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-header">Broker</h5> <br>
+                        Broker: <input id="broker" value="wss://test.mosquitto.org:8081/mqtt"
+                            class="btn btn-outline-info" style="margin-left: 4%;"><br><br>
+                        <label>Status: </label> <input type="text" value="press connect" disabled id="status"
+                            class="btn btn-outline-info" style="margin-left: 4%;"><br><br>
+                        <button id="connect" class="btn btn-outline-info" style="padding-left: 4%;" onclick="connectFunc()">Connect</button>
+
+                    </div>
+                </div>
+                <table class="table">
+                    <div class="card-header bg-info">Incoming Messages</div>
+                    <thead>
+                        <tr>
+                            <th scope="col">Topic</th>
+                            <th scope="col">Payload</th>
+                            <th scope="col">Time Stamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="incoming">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-header">Publish</h5> <br>
+                        Topic: <input id="pub-topic" value="cloud" class="btn btn-outline-info"
+                            style="margin-left: 8%;"><br> <br>
+                        Payload: <input id="pub-payload" value="strife" class="btn btn-outline-info"
+                            style="margin-left: 4%;"><br><br>
+                        <button class="btn btn-outline-info" style="padding-left: 4%;" onclick="publishFunc()">Publish</button>
+                    </div>
+                </div>
+                <table class="table">
+                    <div class="card-header bg-info">Publish</div>
+                    <thead>
+                        <tr>
+                            <th scope="col">Topic</th>
+                            <th scope="col">Payload</th>
+                            <th scope="col">Time Stamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publish">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-header">Subscribes</h5> <br>
+                        Topic: <input id="sub-topic" value="cloud" class="btn btn-outline-info"
+                            style="margin-left: 4%;"><br><br>
+                        <button class="btn btn-outline-info" style="padding-left: 4%;" onclick="subscribeFunc()">Subscribe</button>
+                    </div>
+                </div>
+                <table class="table">
+                    <div class="card-header bg-info">Subscribe</div>
+                    <thead>
+                        <tr>
+                            <th scope="col">Topic</th>
+                            <th scope="col">Time Stamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscribe">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="browserMqtt.js"></script>
+        <script src="controller.js"></script>
+    </body>
+
+</html>
